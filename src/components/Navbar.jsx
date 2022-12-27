@@ -41,23 +41,35 @@ const Navbar = () => {
           </Link>
         </Box>
         <Box sx={{ alignSelf: "center" }}>
-          <Button variant="contained">
-            {user?.displayName ? (
+          {user?.displayName ? (
+            <Button variant="contained">
               <Link
                 onClick={handleSignOut}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 Log Out {user.displayName}
               </Link>
-            ) : (
-              <Link
-                to="signin"
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                Sign in
-              </Link>
-            )}
-          </Button>
+            </Button>
+          ) : (
+            <>
+              <Button variant="text" sx={{ marginRight: "20px" }}>
+                <Link
+                  to="signup"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  Log In
+                </Link>
+              </Button>
+              <Button variant="contained">
+                <Link
+                  to="signin"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  Get Started
+                </Link>
+              </Button>
+            </>
+          )}
         </Box>
       </Box>
     </Box>
