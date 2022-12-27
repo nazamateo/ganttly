@@ -17,6 +17,9 @@ The project is currently in development.
 ## Dependencies
 
 firebase
+react-router-dom
+react-google-button
+material-ui
 
 ## Installation and setup
 
