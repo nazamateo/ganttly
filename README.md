@@ -16,6 +16,8 @@ The project is currently in development.
 
 ## Dependencies
 
+firebase
+
 ## Installation and setup
 
 ## Reflection
