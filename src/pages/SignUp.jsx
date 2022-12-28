@@ -12,24 +12,12 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+//icons
+import GoogleIcon from "@mui/icons-material/Google";
+import FacebookIcon from "@mui/icons-material/Facebook";
 
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import Divider from "@mui/material/Divider";
+import Copyright from "../components/CopyRight";
 
 const theme = createTheme();
 
@@ -68,27 +56,6 @@ export default function SignUp() {
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
@@ -115,7 +82,12 @@ export default function SignUp() {
                   control={
                     <Checkbox value="allowExtraEmails" color="primary" />
                   }
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                  label={
+                    <Typography variant="body2" color="textSecondary">
+                      I want to receive inspiration, marketing promotions and
+                      updates via email.
+                    </Typography>
+                  }
                 />
               </Grid>
             </Grid>
@@ -127,9 +99,26 @@ export default function SignUp() {
             >
               Sign Up
             </Button>
+            <Divider>or</Divider>
+            <Grid container spacing={1} sx={{ mt: 2, mb: 2 }}>
+              <Grid item xs={12}>
+                <Button variant="outlined" fullWidth startIcon={<GoogleIcon />}>
+                  Sign up with Google
+                </Button>
+              </Grid>
+              <Grid item xs={12}>
+                <Button
+                  variant="outlined"
+                  fullWidth
+                  startIcon={<FacebookIcon />}
+                >
+                  Sign up with Facebook
+                </Button>
+              </Grid>
+            </Grid>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="#" variant="body2" underline="hover">
                   Already have an account? Sign in
                 </Link>
               </Grid>

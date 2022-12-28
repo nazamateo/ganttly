@@ -54,7 +54,7 @@ const Navbar = () => {
             <>
               <Button variant="text" sx={{ marginRight: "20px" }}>
                 <Link
-                  to="signup"
+                  to="signin"
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
                   Log In
@@ -62,7 +62,7 @@ const Navbar = () => {
               </Button>
               <Button variant="contained">
                 <Link
-                  to="signin"
+                  to="signup"
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
                   Get Started

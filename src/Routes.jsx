@@ -8,6 +8,7 @@ import Protected from "./components/Protected";
 import Landing from "./pages/Landing";
 import Public from "./components/Public";
 import SignUp from "./pages/SignUp";
+import SignInSide from "./pages/SignInSide";
 
 export const router = createBrowserRouter([
   {
@@ -23,22 +24,7 @@ export const router = createBrowserRouter([
           </Public>
         ),
       },
-      {
-        path: "signup",
-        element: (
-          <Public>
-            <SignUp />
-          </Public>
-        ),
-      },
-      {
-        path: "signin",
-        element: (
-          <Public>
-            <SignIn />
-          </Public>
-        ),
-      },
+
       {
         path: "home",
         element: (
@@ -48,5 +34,22 @@ export const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "signup",
+    element: (
+      <Public>
+        <SignUp />
+      </Public>
+    ),
+  },
+  {
+    path: "signin",
+    element: (
+      <Public>
+        {/* <SignIn /> */}
+        <SignInSide />
+      </Public>
+    ),
   },
 ]);
