@@ -19,9 +19,13 @@ import IconButton from "@mui/material/IconButton";
 import Divider from "@mui/material/Divider";
 import Copyright from "../components/CopyRight";
 
+import { UserAuth } from "../context/AuthContext";
+
 const theme = createTheme();
 
 export default function SignInSide() {
+  const { googleSignIn } = UserAuth();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -29,6 +33,14 @@ export default function SignInSide() {
       email: data.get("email"),
       password: data.get("password"),
     });
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -149,8 +161,15 @@ export default function SignInSide() {
                   </Link>
                 </Grid>
                 <Grid item>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    sx={{ display: "inline" }}
+                  >
+                    Don't have an account?{" "}
+                  </Typography>
                   <Link href="#" underline="hover" variant="body2">
-                    Don't have an account? Sign Up
+                    Sign Up
                   </Link>
                 </Grid>
               </Grid>
@@ -159,7 +178,6 @@ export default function SignInSide() {
                   or sign in with
                 </Typography>
               </Divider>
-
               <Box
                 sx={{
                   display: "flex",
@@ -168,10 +186,10 @@ export default function SignInSide() {
                   justifyContent: "center",
                 }}
               >
-                <IconButton aria-label="google">
-                  <GoogleIcon />
+                <IconButton aria-label="google" onClick={handleGoogleSignIn}>
+                  <GoogleIcon color="primary" />
                 </IconButton>
-                <IconButton aria-label="facebook">
+                <IconButton aria-label="facebook" color="primary">
                   <FacebookIcon />
                 </IconButton>
               </Box>

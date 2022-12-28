@@ -2,7 +2,6 @@ import React from "react";
 import App from "./App";
 import ErrorPage from "./pages/ErrorPage";
 import { createBrowserRouter } from "react-router-dom";
-import SignIn from "./pages/SignIn";
 import Home from "./pages/Home";
 import Protected from "./components/Protected";
 import Landing from "./pages/Landing";
