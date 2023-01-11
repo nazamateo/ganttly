@@ -25,7 +25,7 @@ import { useNavigate } from "react-router-dom";
 const theme = createTheme();
 
 export default function SignInSide() {
-  const { googleSignIn, emailSignIn } = UserAuth();
+  const { googleSignIn, emailSignIn, facebookSignIn } = UserAuth();
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -43,6 +43,13 @@ export default function SignInSide() {
       await googleSignIn();
     } catch (error) {
       console.log(error);
+    }
+  };
+  const handleFacebookSignIn = async () => {
+    try {
+      await facebookSignIn();
+    } catch (error) {
+      alert(error);
     }
   };
 
@@ -199,7 +206,11 @@ export default function SignInSide() {
                 <IconButton aria-label="google" onClick={handleGoogleSignIn}>
                   <GoogleIcon color="primary" />
                 </IconButton>
-                <IconButton aria-label="facebook" color="primary">
+                <IconButton
+                  aria-label="facebook"
+                  color="primary"
+                  onClick={handleFacebookSignIn}
+                >
                   <FacebookIcon />
                 </IconButton>
               </Box>
