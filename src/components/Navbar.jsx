@@ -41,7 +41,7 @@ const Navbar = () => {
           </Link>
         </Box>
         <Box sx={{ alignSelf: "center" }}>
-          {user?.displayName ? (
+          {user ? (
             <Button variant="contained">
               <Link
                 onClick={handleSignOut}

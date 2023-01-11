@@ -5,6 +5,8 @@ import {
   signInWithRedirect,
   signOut,
   onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase_setup/firebase";
 
@@ -18,17 +20,29 @@ export const AuthContextProvider = ({ children }) => {
     signInWithRedirect(auth, provider);
   };
 
+  const emailSignIn = (email, password) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        setUser(userCredential.user);
+      })
+      .catch((error) => {
+        console.log(error);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+  };
+
   const newUserSignUp = (email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         setUser(userCredential.user);
-
-        // ...
       })
       .catch((error) => {
+        console.log(error);
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(errorMessage);
         // ..
       });
   };
@@ -47,7 +61,9 @@ export const AuthContextProvider = ({ children }) => {
     };
   }, []);
   return (
-    <AuthContext.Provider value={{ googleSignIn, logOut, user, newUserSignUp }}>
+    <AuthContext.Provider
+      value={{ googleSignIn, logOut, user, newUserSignUp, emailSignIn }}
+    >
       {children}
     </AuthContext.Provider>
   );

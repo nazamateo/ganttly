@@ -5,7 +5,7 @@ import LoadingScreen from "./Loader";
 const Home = () => {
   const { user } = UserAuth();
 
-  if (user? == null) {
+  if (!user) {
     return <LoadingScreen />;
   }
   return (

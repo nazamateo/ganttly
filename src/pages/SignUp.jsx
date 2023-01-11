@@ -20,11 +20,13 @@ import Divider from "@mui/material/Divider";
 import Copyright from "../components/CopyRight";
 import { UserAuth } from "../context/AuthContext";
 
+import { useNavigate } from "react-router-dom";
+
 const theme = createTheme();
 
 export default function SignUp() {
   const { newUserSignUp } = UserAuth();
-
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -122,7 +124,14 @@ export default function SignUp() {
             </Grid>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2" underline="hover">
+                <Link
+                  onClick={() => {
+                    navigate("/signin");
+                  }}
+                  variant="body2"
+                  underline="hover"
+                  style={{ cursor: "pointer" }}
+                >
                   Already have an account? Sign in
                 </Link>
               </Grid>

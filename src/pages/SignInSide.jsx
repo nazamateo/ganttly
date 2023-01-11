@@ -20,12 +20,13 @@ import Divider from "@mui/material/Divider";
 import Copyright from "../components/CopyRight";
 
 import { UserAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
 export default function SignInSide() {
-  const { googleSignIn } = UserAuth();
-
+  const { googleSignIn, emailSignIn } = UserAuth();
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -33,6 +34,8 @@ export default function SignInSide() {
       email: data.get("email"),
       password: data.get("password"),
     });
+
+    emailSignIn(data.get("email"), data.get("password"));
   };
 
   const handleGoogleSignIn = async () => {
@@ -168,7 +171,14 @@ export default function SignInSide() {
                   >
                     Don't have an account?{" "}
                   </Typography>
-                  <Link href="#" underline="hover" variant="body2">
+                  <Link
+                    onClick={() => {
+                      navigate("/signup");
+                    }}
+                    underline="hover"
+                    variant="body2"
+                    style={{ cursor: "pointer" }}
+                  >
                     Sign Up
                   </Link>
                 </Grid>
