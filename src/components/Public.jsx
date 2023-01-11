@@ -4,10 +4,7 @@ import { UserAuth } from "../context/AuthContext";
 
 const Public = ({ children }) => {
   const { user } = UserAuth();
-  if (user != null) {
-    return <Navigate to="/home" />;
-  }
-  return children;
+  return user?.email ? <Navigate to="/home" /> : children;
 };
 
 export default Public;
