@@ -18,10 +18,13 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 
 import Divider from "@mui/material/Divider";
 import Copyright from "../components/CopyRight";
+import { UserAuth } from "../context/AuthContext";
 
 const theme = createTheme();
 
 export default function SignUp() {
+  const { newUserSignUp } = UserAuth();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -29,6 +32,7 @@ export default function SignUp() {
       email: data.get("email"),
       password: data.get("password"),
     });
+    newUserSignUp(data.get("email"), data.get("password"));
   };
 
   return (

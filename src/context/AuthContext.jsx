@@ -17,6 +17,22 @@ export const AuthContextProvider = ({ children }) => {
     // signInWithPopup(auth, provider);
     signInWithRedirect(auth, provider);
   };
+
+  const newUserSignUp = (email, password) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        setUser(userCredential.user);
+
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+  };
+
   const logOut = () => {
     signOut(auth);
   };
@@ -31,7 +47,7 @@ export const AuthContextProvider = ({ children }) => {
     };
   }, []);
   return (
-    <AuthContext.Provider value={{ googleSignIn, logOut, user }}>
+    <AuthContext.Provider value={{ googleSignIn, logOut, user, newUserSignUp }}>
       {children}
     </AuthContext.Provider>
   );
