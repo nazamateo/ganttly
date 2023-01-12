@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import logo from "../assets/chart-icon.png";
@@ -9,9 +9,11 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 import { UserAuth } from "../context/AuthContext";
+import { borderRadius } from "@mui/system";
 
 const Navbar = () => {
   const { user, logOut } = UserAuth();
+
   const handleSignOut = async () => {
     try {
       await logOut();
@@ -41,7 +43,7 @@ const Navbar = () => {
           </Link>
         </Box>
         <Box sx={{ alignSelf: "center" }}>
-          {user ? (
+          {user?.email ? (
             <Button variant="contained">
               <Link
                 onClick={handleSignOut}
@@ -49,6 +51,16 @@ const Navbar = () => {
               >
                 Log Out {user.displayName}
               </Link>
+              {user.reloadUserInfo.photoUrl ? (
+                <Avatar
+                  alt="profile avatar"
+                  src={user.reloadUserInfo.photoUrl}
+                />
+              ) : (
+                <Avatar alt="profile avatar" sx={{ bgcolor: "gray" }}>
+                  {user.email.charAt(0)}
+                </Avatar>
+              )}
             </Button>
           ) : (
             <>

@@ -25,8 +25,24 @@ import { useNavigate } from "react-router-dom";
 const theme = createTheme();
 
 export default function SignUp() {
-  const { newUserSignUp } = UserAuth();
+  const { newUserSignUp, googleSignIn, facebookSignIn } = UserAuth();
   const navigate = useNavigate();
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleFacebookSignIn = async () => {
+    try {
+      await facebookSignIn();
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -108,7 +124,12 @@ export default function SignUp() {
             <Divider>or</Divider>
             <Grid container spacing={1} sx={{ mt: 2, mb: 2 }}>
               <Grid item xs={12}>
-                <Button variant="outlined" fullWidth startIcon={<GoogleIcon />}>
+                <Button
+                  variant="outlined"
+                  fullWidth
+                  startIcon={<GoogleIcon />}
+                  onClick={handleGoogleSignIn}
+                >
                   Sign up with Google
                 </Button>
               </Grid>
@@ -117,6 +138,7 @@ export default function SignUp() {
                   variant="outlined"
                   fullWidth
                   startIcon={<FacebookIcon />}
+                  onClick={handleFacebookSignIn}
                 >
                   Sign up with Facebook
                 </Button>

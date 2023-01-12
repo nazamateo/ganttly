@@ -23,8 +23,8 @@ export const AuthContextProvider = ({ children }) => {
 
   const facebookSignIn = () => {
     const provider = new FacebookAuthProvider();
-    signInWithPopup(auth, provider);
-    // signInWithRedirect(auth, provider);
+    // signInWithPopup(auth, provider);
+    signInWithRedirect(auth, provider);
   };
 
   const emailSignIn = (email, password) => {
