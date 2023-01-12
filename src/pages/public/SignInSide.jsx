@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -17,16 +18,23 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import IconButton from "@mui/material/IconButton";
 import Divider from "@mui/material/Divider";
-import Copyright from "../components/CopyRight";
+import Copyright from "../../components/CopyRight";
 
-import { UserAuth } from "../context/AuthContext";
+import { UserAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import LoadingScreen from "../Loader";
 
 const theme = createTheme();
 
 export default function SignInSide() {
+  const [isLoading, setIsLoading] = useState(false);
   const { googleSignIn, emailSignIn, facebookSignIn } = UserAuth();
   const navigate = useNavigate();
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);

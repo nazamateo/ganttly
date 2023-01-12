@@ -17,8 +17,8 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 
 import Divider from "@mui/material/Divider";
-import Copyright from "../components/CopyRight";
-import { UserAuth } from "../context/AuthContext";
+import Copyright from "../../components/CopyRight";
+import { UserAuth } from "../../context/AuthContext";
 
 import { useNavigate } from "react-router-dom";
 

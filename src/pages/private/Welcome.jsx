@@ -1,11 +1,12 @@
 import React from "react";
-import { UserAuth } from "../context/AuthContext";
-import LoadingScreen from "./Loader";
+import { Outlet } from "react-router-dom";
+import { UserAuth } from "../../context/AuthContext";
+import LoadingScreen from "../Loader";
 
-const Home = () => {
+const Welcome = () => {
   const { user } = UserAuth();
 
-  if (!user) {
+  if (user == null) {
     return <LoadingScreen />;
   }
   return (
@@ -16,4 +17,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Welcome;

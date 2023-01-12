@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, Typography, Avatar, Menu } from "@mui/material";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
@@ -16,7 +16,13 @@ const Navbar = () => {
   const { user } = UserAuth();
 
   return (
-    <Box sx={{ width: 1 }}>
+    <Box
+      sx={{
+        height: "4rem",
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
       <Box
         sx={{
           width: 0.95,

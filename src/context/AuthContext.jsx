@@ -10,11 +10,12 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase_setup/firebase";
-
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
     // signInWithPopup(auth, provider);
@@ -73,6 +74,7 @@ export const AuthContextProvider = ({ children }) => {
         googleSignIn,
         logOut,
         user,
+        isLoading,
         newUserSignUp,
         emailSignIn,
         facebookSignIn,

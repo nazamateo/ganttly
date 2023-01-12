@@ -2,12 +2,14 @@ import React from "react";
 import App from "./App";
 import ErrorPage from "./pages/ErrorPage";
 import { createBrowserRouter } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from "./pages/private/Home";
 import Protected from "./components/Protected";
-import Landing from "./pages/Landing";
+import Landing from "./pages/public/Landing";
 import Public from "./components/Public";
-import SignUp from "./pages/SignUp";
-import SignInSide from "./pages/SignInSide";
+import SignUp from "./pages/public/SignUp";
+import SignInSide from "./pages/public/SignInSide";
+import Checkout from "./pages/Checkout";
+import Welcome from "./pages/private/Welcome";
 
 export const router = createBrowserRouter([
   {
@@ -23,7 +25,6 @@ export const router = createBrowserRouter([
           </Public>
         ),
       },
-
       {
         path: "home",
         element: (
@@ -31,6 +32,16 @@ export const router = createBrowserRouter([
             <Home />
           </Protected>
         ),
+        children: [
+          {
+            path: "/home",
+            element: <Welcome />,
+          },
+          {
+            path: "account",
+            element: <Checkout />,
+          },
+        ],
       },
     ],
   },
