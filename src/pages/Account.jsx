@@ -26,7 +26,7 @@ function Copyright() {
 
 const theme = createTheme();
 
-export default function Checkout() {
+export default function Account() {
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
@@ -41,7 +41,7 @@ export default function Checkout() {
             <Typography variant="h6" gutterBottom>
               General Info
             </Typography>
-
+            <p>profile picture</p>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6}>
                 <TextField

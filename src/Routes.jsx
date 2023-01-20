@@ -8,7 +8,7 @@ import Landing from "./pages/public/Landing";
 import Public from "./components/Public";
 import SignUp from "./pages/public/SignUp";
 import SignInSide from "./pages/public/SignInSide";
-import Checkout from "./pages/Checkout";
+import Account from "./pages/Account";
 import Welcome from "./pages/private/Welcome";
 
 export const router = createBrowserRouter([
@@ -39,7 +39,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "account",
-            element: <Checkout />,
+            element: <Account />,
           },
         ],
       },
